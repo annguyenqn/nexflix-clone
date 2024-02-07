@@ -5,17 +5,20 @@ import Credentials from 'next-auth/providers/credentials';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { compare } from 'bcrypt';
 import prismadb from '../../../lib/prismadb'
-
+//Cung cấp các option để login
 export const authOptions: AuthOptions = {
     providers: [
+        //login thông qua acc github
         GithubProvider({
             clientId: process.env.GITHUB_ID || '',
             clientSecret: process.env.GITHUB_SECRET || '',
         }),
+        //login thông qua acc google
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID || '',
             clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
         }),
+        //login thông qua email,pass đã sign up
         Credentials({
             id: 'credentials',
             name: 'Credentials',

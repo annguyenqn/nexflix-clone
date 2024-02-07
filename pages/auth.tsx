@@ -14,15 +14,20 @@ const Auth = () => {
 
     const [variant, setVariant] = useState('login');
 
+    // KIỂM TRA VARIANT HIỆN TẠI CÓ LÀ LOGIN K NẾU LÀ LOGIN THÌ THAY ĐỔI LÀ REGISTER NẾU KO THÌ THAY THÀNH LOGIN
     const toogleVariant = useCallback(() => {
         setVariant((currentVariant) => currentVariant === 'login' ? 'register' : 'login');
     }, [])
+    // [email,password] đảm báo chỉ khi các state chúng nó thay đổi thì mới chạy usercallback
     const login = useCallback(async () => {
+        //Gọi hàm signIn với option login là : credentials
+        // với param là email và password
         try {
             await signIn('credentials', {
                 email,
                 password,
-                redirect: false,
+                // redirect: false,
+                //Nếu login thành công thì chuyển hướng đến url 
                 callbackUrl: '/profiles'
             })
             // router.push('/');
@@ -47,7 +52,7 @@ const Auth = () => {
     return (
 
         <>
-            <div className="relative h-[1000px] w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
+            <div className="relative h-screen w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
                 <div className="bg-black w-full h-full lg:bg-opacity-50">
                     <nav className="px-12 py-5">
                         <img src="/images/logo.png" alt="Logo" className="h-12" />
