@@ -7,6 +7,7 @@ import MovieList from "@/components/MovieList";
 import useInfoModalStore from "@/hooks/useInfoModalStore";
 import useFavorites from "@/hooks/useFavorites";
 import useMovieList from "@/hooks/useMovieList";
+import InfoModal from "@/components/InfoModal";
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
 
@@ -38,6 +39,7 @@ export default function Home() {
       <button onClick={() => signOut()}
         className="h-10 w-full bg-white"
       >  Logout</button> */}
+      <InfoModal visible={isOpen} onClose={closeModal} />
       <Navbar />
       <Billboard />
       <div className="pb-40">

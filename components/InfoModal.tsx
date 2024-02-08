@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { AiOutlineClose } from "react-icons/ai";
 
 import PlayButton from '@/components/PlayButton';
-// import FavoriteButton from '@/components/FavoriteButton';
+import FavoriteButton from '@/components/FavoriteButton';
 import useInfoModalStore from '@/hooks/useInfoModalStore';
 import useMovie from '@/hooks/useMovie';
 
@@ -31,6 +31,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
     if (!visible) {
         return null;
     }
+    // console.log('this is movie id', movieId);
 
     return (
         <div className="z-50 transition duration-300 bg-black bg-opacity-80 flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0">
@@ -48,7 +49,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
                             </p>
                             <div className="flex flex-row gap-4 items-center">
                                 <PlayButton movieId={data?.id} />
-                                {/* <FavoriteButton movieId={data?.id} /> */}
+                                <FavoriteButton movieId={data?.id} />
                             </div>
                         </div>
                     </div>
